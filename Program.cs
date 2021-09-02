@@ -1,23 +1,43 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System;
 
-namespace JogoDaVelha2
+namespace urna
 {
-    static class Program
+    class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Pessoa cliente = new Pessoa();
+            Console.WriteLine("Qual seu nome?");
+            cliente.nome = Console.ReadLine();
+
+            Console.WriteLine("Seja bem vindo " + cliente.nome);
+
+            Console.WriteLine("Qual a sua idade?");
+            cliente.idade = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Qual seu sexo?");
+            cliente.sexo = Console.ReadLine();
+
+
+            if (cliente.idade < 16)
+            {
+                Console.WriteLine(cliente.nome + " do sexo " + cliente.sexo + " ,de " + cliente.idade + " anos de idade" + " não pode votar");
+            }
+            else if (cliente.idade >= 16 && cliente.idade < 18)
+            {
+                Console.WriteLine(cliente.nome + " do sexo " + cliente.sexo + " ,de " + cliente.idade + " anos de idade" + " pode votar");
+            }
+            else if (cliente.idade >= 18 && cliente.idade < 65)
+            {
+                Console.WriteLine(cliente.nome + " do sexo " + cliente.sexo + " ,de " + cliente.idade + " anos de idade" + " voto Obrigatorio");
+            }
+            else
+            {
+                Console.WriteLine(cliente.nome + " do sexo " + cliente.sexo + " ,de " + cliente.idade + " anos de idade" + " voto não obrigatorio");
+            }
+
+          
+
         }
     }
 }
